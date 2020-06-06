@@ -57,10 +57,9 @@ function initTextField(){
     input.keyup(function () {
       expr = input.val();
       tree = math.parse(expr, scope);
-
       c.clearRect(0, 0, canvas.width, canvas.height); 
       drawCurve(); 
     });
 }
 
-initTextField(); 
+initTextField();

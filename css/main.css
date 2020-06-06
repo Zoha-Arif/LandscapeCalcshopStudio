@@ -8,10 +8,24 @@
     position: relative;
     left: 30px; 
     top: 100px; 
+    z-index: 100;
 }
 
 #inputField {
     position: absolute;
     left: 30px; 
     top: 770px;
+}
+
+#inputFieldClouds {
+    position: absolute; 
+    left: 400px; 
+    top: 770px; 
+}
+
+#cloudCanvas {
+    position: absolute;
+    left: 30px;
+    top: 200px; 
+    z-index: 101;
 }

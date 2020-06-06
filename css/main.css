@@ -1,0 +1,17 @@
+#Logo {
+    position: absolute;
+    left: 30px;  
+    height: 100px;
+}
+
+#myCanvas {
+    position: relative;
+    left: 30px; 
+    top: 100px; 
+}
+
+#inputField {
+    position: absolute;
+    left: 30px; 
+    top: 770px;
+}

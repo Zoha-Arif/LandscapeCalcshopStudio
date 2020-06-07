@@ -17,7 +17,7 @@
     top: 770px;
 }
 
-#inputFieldClouds {
+#inputFieldCloud {
     position: absolute; 
     left: 400px; 
     top: 770px; 
@@ -26,6 +26,6 @@
 #cloudCanvas {
     position: absolute;
     left: 30px;
-    top: 200px; 
+    top: 100px; 
     z-index: 101;
 }

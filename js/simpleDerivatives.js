@@ -1,9 +1,8 @@
 var samplePoly = "3x^2 - 2x - 4 + 5x - 3 + 4x^2 + 3x^3 + 7x - 9x + 8x^4 - 9x^3 + 9 + 4894 -3x + 3x + 47x"
 
-var termArrayPlus = []; 
-var termArrayMinus = []; 
-
 function polyDerivative(samplePoly){
+    var termArrayPlus = []; 
+    var termArrayMinus = []; 
     var char = samplePoly.split(""); 
     var charArray = [];
 
@@ -245,8 +244,27 @@ function polyDerivative(samplePoly){
         newTermArrayExponents.push(finalConstant);
     }
 
-    console.log("SJKHKHSA");
-    console.log(newTermArrayExponents);
+    var finalString = "";
+    for (var jar = 0; jar < 100; jar++){
+        if (newTermArrayExponents[jar] == "|"){
+            var newJar = jar + 1; 
+            for (fire = newJar; fire != 101029383833838383736638373663773; fire++){
+                if ((newTermArrayExponents[fire] == "|") || (typeof newTermArrayExponents[fire] == 'undefined')){
+                    fire = 101029383833838383736638373663773;
+                } else {
+                    var addString = newTermArrayExponents[fire].toString(); 
+                    finalString = finalString + addString;
+                }
+
+            }
+        }
+    }
+
+    if ((finalString.charAt(0) == "+") || (finalString.charAt(0) == "-")){
+        finalString = finalString.substring(1);
+    } 
+    console.log("FINAL DERIVATIVE?"); 
+    console.log(finalString);
 }
 
 polyDerivative(samplePoly);

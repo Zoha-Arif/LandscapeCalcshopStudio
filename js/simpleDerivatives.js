@@ -250,7 +250,7 @@ function polyDerivative(samplePoly){
         }
     }
 
-    if ((finalString.charAt(0) == "+") || (finalString.charAt(0) == "-")){
+    if ((finalString.charAt(0) == "+")){
         finalString = finalString.substring(1);
     } 
     console.log("FINAL DERIVATIVE?"); 

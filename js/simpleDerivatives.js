@@ -1,4 +1,4 @@
-var samplePoly = "3x^2 - 2x - 4 + 5x - 3 + 4x^2 + 3x^3 + 7x - 9x"
+var samplePoly = "3x^2 - 2x - 4 + 5x - 3 + 4x^2 + 3x^3 + 7x - 9x + 8x^4 - 9x^3 + 9 + 4894"
 
 var termArrayPlus = []; 
 var termArrayMinus = []; 
@@ -12,16 +12,22 @@ function polyDerivative(samplePoly){
             charArray.push(char[i]);
         }
     }
+    var zebra;
+    var zebraArray = [];
+    var indicator = charArray.length;
+    for (zebra = 0; zebra < indicator; zebra++){
+        if (charArray[zebra] == "^"){
+            zebraArray.push(zebra);
+        }
+    }
 
-    console.log("CHARRAY INITIAL:");
-    console.log(charArray);
     var termArrayExponents = []; 
 
-    for (var a = 0; a < charArray.length; a++){
+    for (var a = 0; a < 100; a++){
         console.log("AAAAAA");
+        console.log(charArray[a]);
         console.log(a);
-        if (charArray[a] == "^"){
-            console.log("MADE IT!");
+        if ((charArray[a] == "^")){
             var afterIndex = a + 1; 
             termArrayExponents.push(charArray[afterIndex]);
             charArray.splice(afterIndex, 1);
@@ -50,6 +56,7 @@ function polyDerivative(samplePoly){
                     charArray.splice(j, 1);
                 }
             }
+            a = 0; 
         }
     }
         termArrayExponents = termArrayExponents.reverse();
@@ -69,6 +76,7 @@ function polyDerivative(samplePoly){
                         termArrayPlus.push(charArray[s]);
                     }
                 }
+                termArrayPlus.push("|");
             }
 
             if ((charArray[beforeIndex] == "-")){
@@ -79,6 +87,7 @@ function polyDerivative(samplePoly){
                         termArrayMinus.push(charArray[y]);
                     }
                 }
+                termArrayMinus.push("|");
             }
         }
 
@@ -99,6 +108,23 @@ function polyDerivative(samplePoly){
 
     //split up exponential and non-exponential functions.
 
+    var newTermArrayPlus = [];
+    for(var monk = 0; monk < 20; monk++){
+        var afterIndex1 = monk + 1; 
+        if (termArrayPlus[afterIndex1] == "x"){
+            newTermArrayPlus.push(termArrayPlus[afterIndex1]);
+            newTermArrayPlus.push(termArrayPlus[monk]);   
+            for (var term = monk; term != 101029383833838383736638373663773; term = term - 1){
+                if (termArrayPlus[term] == "|") {
+                    term = 101029383833838383736638373663773;
+                } else {
+                    newTermArrayPlus.push(termArrayPlus[term]);
+                }
+            }
+        }
+    }
+    console.log("COMPLETE PLUS");
+    console.log(newTermArrayPlus);
     //split up non-exponential and exponential functions but multiply everything by -1 at the end.
 }
 

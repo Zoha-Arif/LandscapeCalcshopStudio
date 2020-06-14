@@ -1,10 +1,15 @@
-var samplePoly = "3x^2 - 2x - 4 + 5x - 3 + 4x^2 + 3x^3 + 7x - 9x + 8x^4 - 9x^3 + 9 + 4894 -3x + 3x + 47x"
+var sampleInt = "3x^2 - 2x - 4 + 5x - 3 + 4x^2 + 3x^3 + 7x - 9x + 8x^4 - 9x^3 + 9 + 4894 -3x + 3x + 47x"
 
-function polyDerivative(samplePoly){
+/* LIMITATIONS: DO NOT USE PARENTHESIS. DO NOT USE COTAN, TAN, SEC OR WHATNOT. */
+/*List of things left to do:
+-integral for polynomials 
+-integral for sin + cos 
+-derivative for sin + cos 
+-then we need to plot the integral and derivave. 
+-finally, make it all look p spicy. 
 
-    if (samplePoly.includes("(", 0)) {
-
-    }
+*/
+function polyIntegral(sampleInt){
 
     /*
     if (samplePoly.includes("sin", 0)){
@@ -15,7 +20,7 @@ function polyDerivative(samplePoly){
 
     var termArrayPlus = []; 
     var termArrayMinus = []; 
-    var char = samplePoly.split(""); 
+    var char = sampleInt.split(""); 
     var charArray = [];
 
     for (var i = 0; i < char.length; i++){
@@ -103,46 +108,74 @@ function polyDerivative(samplePoly){
             }
         }
     }   
+    console.log("THE FINAL PRODUCT:");
+    console.log(termArrayExponents);
+    console.log(termArrayMinus); 
+    console.log(termArrayPlus);
+
     //split up exponential and non-exponential functions.
 
     var newTermArrayPlus = [];
     for(var monk = 0; monk < 50; monk++){
         var afterIndex1 = monk + 1; 
         if (termArrayPlus[afterIndex1] == "x"){
+            newTermArrayPlus.push("2");
+            newTermArrayPlus.push("^");
+            newTermArrayPlus.push("x");
             /*newTermArrayPlus.push(termArrayPlus[monk]); */   
+
+            var multiplyExponents = [];
             for (var term = monk; term != 101029383833838383736638373663773; term--){
                 if ((termArrayPlus[term] == "|") || (typeof termArrayPlus[term] == 'undefined')) {
                     term = 101029383833838383736638373663773;
                 } else {
-                    newTermArrayPlus.push(termArrayPlus[term]);
+                    multiplyExponents.push(termArrayPlus[term]);
                 }
             }
+            var str = multiplyExponents.toString();
+            var newInt = parseInt(str);
+            var newConstant = newInt / (2);
+            newTermArrayPlus.push(newConstant);
             newTermArrayPlus.push("+");
             newTermArrayPlus.push("|");
         }
     }
 
     newTermArrayPlus = newTermArrayPlus.reverse();
+    console.log("COMPLETE PLUS");
+    console.log(newTermArrayPlus);
     //split up non-exponential and exponential functions but multiply everything by -1 at the end.
 
     var newTermArrayMinus = [];
     for(var monk1 = 0; monk1 < 50; monk1++){
         var afterIndex2 = monk1 + 1; 
         if (termArrayMinus[afterIndex2] == "x"){
-            /*newTermArrayPlus.push(termArrayPlus[monk]); */   
+            newTermArrayMinus.push("2");
+            newTermArrayMinus.push("^");
+            newTermArrayMinus.push("x");
+            /*newTermArrayPlus.push(termArrayPlus[monk]); */  
+            
+            var multiplyExponents = [];
             for (var term1 = monk1; term1 != 101029383833838383736638373663773; term1--){
                 if ((termArrayMinus[term1] == "|") || (typeof termArrayMinus[term1] == 'undefined')) {
                     term1 = 101029383833838383736638373663773;
                 } else {
-                    newTermArrayMinus.push(termArrayMinus[term1]);
+                    multiplyExponents.push(termArrayMinus[term1]);
                 }
             }
+
+            var str = multiplyExponents.toString();
+            var newInt = parseInt(str);
+            var newConstant = newInt / (2);
+            newTermArrayMinus.push(newConstant);
             newTermArrayMinus.push("-");
             newTermArrayMinus.push("|");
         }
     }
 
     newTermArrayMinus = newTermArrayMinus.reverse();
+    console.log("COMPLETE Minus");
+    console.log(newTermArrayMinus);
 
     var newTermArrayExponents = [];
 
@@ -150,7 +183,7 @@ function polyDerivative(samplePoly){
         if (termArrayExponents[kang] == "^"){
             var exponentIndex = kang + 1; 
             var originalExponent = termArrayExponents[exponentIndex];
-            var newExponent = originalExponent - 1;
+            var newExponent = parseInt(originalExponent) + 1;
             if (newExponent != 0) {
                 newTermArrayExponents.push(newExponent);
                 newTermArrayExponents.push("^"); 
@@ -175,7 +208,7 @@ function polyDerivative(samplePoly){
             }
             var str = multiplyExponents.toString();
             var newInt = parseInt(str);
-            var newConstant = newInt * originalExponent; 
+            var newConstant = newInt / (newExponent);
             newTermArrayExponents.push(newConstant);
             newTermArrayExponents.push(sign);
             newTermArrayExponents.push("|");
@@ -184,77 +217,9 @@ function polyDerivative(samplePoly){
 
     newTermArrayExponents = newTermArrayExponents.reverse();
 
-    var sumPlus = 0; 
-    for (var fira = 0; fira < newTermArrayPlus.length; fira++){
-        if (newTermArrayPlus[fira] == "|"){
-            var number = [];
-            var rod = fira + 1; 
-            for (fira1 = rod; fira1 != 101029383833838383736638373663773; fira1++){
-                if ((newTermArrayPlus[fira1] == "|") || (typeof newTermArrayPlus[fira1] == 'undefined')){
-                    fira1 = 101029383833838383736638373663773;
-                } else {
-                    number.push(newTermArrayPlus[fira1]);
-                }
+    console.log("FINAL EXPONENTS:");
+    console.log(newTermArrayExponents);
 
-            }
-            var real_Number = number.join('');
-            var real_Number = parseInt(real_Number);
-            sumPlus = sumPlus + real_Number;
-        }
-    }
-
-    var differenceMinus = 0; 
-    for (var fira2 = 0; fira2 < newTermArrayMinus.length; fira2++){
-        if (newTermArrayMinus[fira2] == "|"){
-            var number1 = [];
-            var rod1 = fira2 + 1; 
-            for (fira3 = rod1; fira3 != 101029383833838383736638373663773; fira3++){
-                if ((newTermArrayMinus[fira3] == "|") || (typeof newTermArrayMinus[fira3] == 'undefined')){
-                    fira3 = 101029383833838383736638373663773;
-                } else {
-                    number1.push(newTermArrayMinus[fira3]);
-                }
-
-            }
-            var real_Number1 = number1.join('');
-            var real_Number1 = parseInt(real_Number1);
-            /*var real_Number1 = real_Number1 * (-1); */
-            differenceMinus = differenceMinus + real_Number1;
-        }
-    }
-
-    var finalConstant = sumPlus + differenceMinus; 
-    if (finalConstant > 0){
-        newTermArrayExponents.push("|");
-        newTermArrayExponents.push("+");
-        newTermArrayExponents.push(finalConstant); 
-    } else if (finalConstant <0) {
-        newTermArrayExponents.push("|");
-        newTermArrayExponents.push("-");
-        newTermArrayExponents.push(finalConstant);
-    }
-
-    var finalString = "";
-    for (var jar = 0; jar < 100; jar++){
-        if (newTermArrayExponents[jar] == "|"){
-            var newJar = jar + 1; 
-            for (fire = newJar; fire != 101029383833838383736638373663773; fire++){
-                if ((newTermArrayExponents[fire] == "|") || (typeof newTermArrayExponents[fire] == 'undefined')){
-                    fire = 101029383833838383736638373663773;
-                } else {
-                    var addString = newTermArrayExponents[fire].toString(); 
-                    finalString = finalString + addString;
-                }
-
-            }
-        }
-    }
-
-    if ((finalString.charAt(0) == "+") || (finalString.charAt(0) == "-")){
-        finalString = finalString.substring(1);
-    } 
-    console.log("FINAL DERIVATIVE?"); 
-    console.log(finalString);
 }
 
-polyDerivative(samplePoly);
+polyIntegral(sampleInt);

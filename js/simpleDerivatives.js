@@ -1,16 +1,38 @@
-var samplePoly = "3x^2 - 2x - 4 + 5x - 3 + 4x^2 + 3x^3 + 7x - 9x + 8x^4 - 9x^3 + 9 + 4894 -3x + 3x + 47x"
+var samplePoly = "3x^2 - 2x - 4 + 5x - 3 + 4x^2 + 3x^3 + 7x - 9x + 8x^4 - 9x^3 + 9 + 4894 -3x + 3x + 47x + 45sin(x)"
 
 function polyDerivative(samplePoly){
 
-    if (samplePoly.includes("(", 0)) {
+    if (samplePoly.includes("sin", 0)) {
+        var sinArray = [];
+        for (var gir = 0; gir < samplePoly.length; gir++){
+            var afterIndex3 = gir + 1; 
+            if ((samplePoly[gir] == "s") || (samplePoly[afterIndex3] == "i")){
+                //get the stuff before the sin; 
+                gir2 = gir - 1;
+                console.log("GIR2:");
+                console.log(gir2);
+                for (var gir1 = gir2; gir1 != 101029383833838383736638373663773; gir1--){
+                    if ((samplePoly[gir1] == "+") || (samplePoly[gir1] == "-")|| (typeof samplePoly[gir1] == 'undefined') || (samplePoly[gir1] == " ")){
+                        gir1 = 101029383833838383736638373663773;
+                    } else {
+                        sinArray.push(samplePoly[gir1]);
+                    }
+                }
+                sinArray = sinArray.reverse();
 
+                var insideFunctionIndex =  gir + 4; 
+                console.log("HERE WE ARE FIEND!");
+                console.log(insideFunctionIndex);
+            }
+        }
     }
 
-    /*
-    if (samplePoly.includes("sin", 0)){
-        for ()
-        WE'LL DO THIS LATER BOOMER!
-    } */
+    console.log("SIN ARRAY:");
+    console.log(sinArray);
+
+    if (samplePoly.includes("cos", 0)){
+
+    }
 
 
     var termArrayPlus = []; 

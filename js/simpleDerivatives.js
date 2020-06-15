@@ -1,4 +1,4 @@
-var samplePoly = "3x^2 - 2x - 4 + 5x - 3 + 4x^2 + 3x^3 + 7x - 9x + 8x^4 - 9x^3 + 9 + 4894 -3x + 3x + 47x + 45sin(x)"
+var samplePoly = "3x^2 - 2x - 4 + 5x - 3 + 4x^2 + 3x^3 + 7x - 9x + 8x^4 - 9x^3 + 9 + 4894 -3x + 3x + 47x + 453sin(2x^2)"
 
 function polyDerivative(samplePoly){
 
@@ -20,21 +20,77 @@ function polyDerivative(samplePoly){
                 }
                 sinArray = sinArray.reverse();
 
+                var finalAnswer = [];
                 var insideFunctionIndex =  gir + 4; 
-                console.log("HERE WE ARE FIEND!");
-                console.log(insideFunctionIndex);
+                var beforeInsideFunctionIndex = insideFunctionIndex - 1;
+                var afterInsideFunctionIndex = insideFunctionIndex + 1;  
+                var beforeSinIndex = gir - 1;
+                if ((samplePoly[insideFunctionIndex] == "x") && (samplePoly[beforeInsideFunctionIndex] == "(") && (samplePoly[afterInsideFunctionIndex] == ")")){
+                    if (samplePoly[beforeSinIndex] == " "){
+                        var realBeforeSinIndex = beforeInsideFunctionIndex - 1;
+                        if  (((samplePoly[realBeforeSinIndex] == "+") || (samplePoly[realBeforeSinIndex] == "-") || (typeof samplePoly[realBeforeSinIndex] == 'undefined')) && (typeof samplePoly[beforeSinIndex] != 'number')){
+                            finalAnswer.push("cos(x)"); 
+                        }
+                    }  else if (((samplePoly[beforeSinIndex] == "+") || (samplePoly[beforeSinIndex] == "-") || (typeof samplePoly[beforeSinIndex] == 'undefined')) && (typeof samplePoly[beforeSinIndex] != 'number')){
+                        finalAnswer.push("cos(x)"); 
+                    }
+                } else {
+                    var insideFunctionString = "";
+                    var firstInsideIndex = afterInsideFunctionIndex - 1;  
+                    for (var oct = firstInsideIndex; oct != 101029383833838383736638373663773; oct++){
+                        if ((samplePoly[oct] == ")") || (typeof samplePoly[oct] == undefined)){
+                            oct = 101029383833838383736638373663773;
+                        } else {
+                            insideFunctionString = insideFunctionString + samplePoly[oct];
+                        }
+                    }
+
+                    var finalInside = nestedDerivative(insideFunctionString);
+
+                    //get the stuff before the sin function
+                    var beforeStuff = "";
+                    var beforeInsideIndex = gir - 1; 
+                    for (var fish = beforeInsideIndex; fish != 101029383833838383736638373663773; fish--){
+                        if ((samplePoly[fish] == " ") || (samplePoly[fish] == "+") || (samplePoly[fish] == "-") || (typeof samplePoly[fish] == 'undefined')) {
+                            fish = 101029383833838383736638373663773;
+                        } else {
+                            beforeStuff  = beforeStuff + samplePoly[fish];
+                        }
+                    }
+
+                    var splitString = beforeStuff.split("");
+                    var reverseArray = splitString.reverse();
+                    beforeStuff = reverseArray.join("");
+
+                    //split inside function into its exponent and x. 
+                    //multiply constants. 
+                    //combine into one string.
+
+                    if (insideFunctionString.includes("x", 0) == false){
+                        finalAnswer.push(0);
+                    } else {
+                        
+                        if (insideFunctionString.includes("^", 0) == true){
+
+                        } else {
+
+                        }
+                    }
+
+
+                }
+                
             }
         }
     }
-
-    console.log("SIN ARRAY:");
-    console.log(sinArray);
 
     if (samplePoly.includes("cos", 0)){
 
     }
 
+    nestedDerivative(samplePoly);
 
+    function nestedDerivative(samplePoly){
     var termArrayPlus = []; 
     var termArrayMinus = []; 
     var char = samplePoly.split(""); 
@@ -277,6 +333,7 @@ function polyDerivative(samplePoly){
     } 
     console.log("FINAL DERIVATIVE?"); 
     console.log(finalString);
+    }
 }
 
 polyDerivative(samplePoly);

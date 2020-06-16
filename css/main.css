@@ -1,7 +1,7 @@
 #can {
     position: absolute;
-    z-index: 200; 
-    left: 500px;
+    z-index: 500; 
+    left: 30px;
     border: 1px solid black; 
 }
 #Logo {
@@ -21,12 +21,14 @@
     position: absolute;
     left: 30px; 
     top: 770px;
+    z-index: 700; 
 }
 
 #inputFieldCloud {
     position: absolute; 
     left: 400px; 
     top: 770px; 
+    z-index: 800;
 }
 
 #cloudCanvas {

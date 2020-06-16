@@ -1,4 +1,4 @@
-var samplePoly = "3x^2 - 2x - 4 + 5x - 3 + 4x^2 + 3x^3 + 7x - 9x + 8x^4 - 9x^3 + 9 + 4894 -3x + 3x + 47x + 1cos(3x)"
+var samplePoly = "3x^2 - 2x - 4 + 5x - 3 + 4x^2 + 3x^3 + 7x - 9x + 8x^4 - 9x^3 + 9 + 4894 -3x + 3x + 47x + + sin(3x) + cos(3x^2)"
 
 function polyDerivative(samplePoly){
 
@@ -56,6 +56,10 @@ function polyDerivative(samplePoly){
                     var finalInside = nestedDerivative(insideFunctionString);
                     finalInside = String(finalInside);
 
+                    console.log("FINAL INSIDE! WOOOOOO");
+                    console.log(insideFunctionString);
+                    console.log(finalInside);
+
                     if (insideSign == "-"){
                         finalInside = insideSign + finalInside;
                     }
@@ -83,7 +87,7 @@ function polyDerivative(samplePoly){
                         finalAnswer.push(0);
                     } else {
                         var exponentArray = [];
-                        if ((finalInside.includes("^", 0) == true) || (finalInside.includes("+", 0) == false)){
+                        if ((finalInside.includes("^", 0) == true) && (finalInside.includes("+", 0) == false)){
                             for (var viola = 0; viola < finalInside.length; viola++){
                                 exponentArray.push(finalInside[viola]); 
                             }
@@ -167,7 +171,13 @@ function polyDerivative(samplePoly){
 
                             var beforeSinConstant = parseInt(constantsBeforeSin);
 
-                            var newConstant = str * beforeSinConstant; 
+                            var newConstant;
+                            if (isNaN(beforeSinConstant) == true){
+                                newConstant = str; 
+                            } else {
+                                newConstant = str * beforeSinConstant; 
+                            }
+                            
                             if (sign1 == "-") {
                                 newConstant = newConstant * -1;
                                 if (newConstant < 0){
@@ -190,34 +200,43 @@ function polyDerivative(samplePoly){
 
                             console.log("FINAL STRING"); 
                             console.log(finalStringSin);
-                    } else {
+                    } else if (finalInside.includes("^", 0) == false){
                         var constantsBeforeSin = ""; 
-                    console.log("GIRRRR");
-                    console.log(gir);
-                    var sign1 = "+";
-                    for (var yay = (gir - 1); yay != 101029383833838383736638373663773; yay--){
-                        if ((samplePoly[yay] == " ") || (samplePoly[yay] == "+") || (samplePoly[yay] == "-") || (typeof samplePoly[yay] == 'undefined')){
-                            if (samplePoly[yay] == " "){
-                                yay1 = yay - 1; 
-                                if (samplePoly[yay1] == "+"){
+                        var sign1 = "+";
+                        for (var yay = (gir - 1); yay != 101029383833838383736638373663773; yay--){
+                            if ((samplePoly[yay] == " ") || (samplePoly[yay] == "+") || (samplePoly[yay] == "-") || (typeof samplePoly[yay] == 'undefined')){
+                                if (samplePoly[yay] == " "){
+                                    yay1 = yay - 1; 
+                                    if (samplePoly[yay1] == "+"){
+                                        sign1 = "+";
+                                    } else if (samplePoly[yay1] =="-"){
+                                        sign1 = "-"
+                                    }
+                                } else if (samplePoly[yay] == "+"){
                                     sign1 = "+";
-                                } else if (samplePoly[yay1] =="-"){
-                                    sign1 = "-"
+                                } else if (samplePoly[yay] == "-") {
+                                    sign1 = "-";
                                 }
-                            } else if (samplePoly[yay] == "+"){
-                                sign1 = "+";
-                            } else if (samplePoly[yay] == "-") {
-                                sign1 = "-";
+                                yay = 101029383833838383736638373663773;
+                            } else {
+                                constantsBeforeSin = constantsBeforeSin + samplePoly[yay];
                             }
-                            yay = 101029383833838383736638373663773;
-                        } else {
-                            constantsBeforeSin = constantsBeforeSin + samplePoly[yay];
                         }
-                    }
 
-                    var beforeSinConstant = parseInt(constantsBeforeSin);
-                    finalInside = parseInt(finalInside);
-                    var newConstant = finalInside * beforeSinConstant;
+                        var beforeSinConstant = parseInt(constantsBeforeSin);
+                        console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                        console.log(finalInside);
+                        finalInside = parseInt(finalInside);
+                        var newConstant;
+                   
+                    if (isNaN(beforeSinConstant) == true){
+                        newConstant = finalInside;
+                        console.log("MADE IT HERE!!!!!!!!!!!!!!!!!!!!!!");
+                        console.log(newConstant);
+                        console.log(finalInside);
+                    } else {
+                        newConstant = finalInside * beforeSinConstant;
+                    }
 
                     if (sign1 == "-") {
                         newConstant = newConstant * -1;
@@ -276,7 +295,7 @@ if (samplePoly.includes("cos", 0)) {
             var afterInsideFunctionIndex = insideFunctionIndex + 1;  
             var beforeCosIndex = gir - 1;
             if ((samplePoly[insideFunctionIndex] == "x") && (samplePoly[beforeInsideFunctionIndex] == "(") && (samplePoly[afterInsideFunctionIndex] == ")")){
-                if (samplePoly[beforeSinIndex] == " "){
+                if (samplePoly[beforeCosIndex] == " "){
                     var realBeforeCosIndex = beforeInsideFunctionIndex - 1;
                     if  (((samplePoly[realBeforeCosIndex] == "+") || (samplePoly[realBeforeCosIndex] == "-") || (typeof samplePoly[realBeforeCosIndex] == 'undefined')) && (typeof samplePoly[beforeCosIndex] != 'number')){
                         finalAnswer.push("cos(x)"); 
@@ -301,7 +320,12 @@ if (samplePoly.includes("cos", 0)) {
                 }
 
                 var finalInside = nestedDerivative(insideFunctionString);
+                console.log(finalInside);
                 finalInside = String(finalInside);
+
+                console.log("COSSSS FINAL INSIDE *@(#&(#@&@( EJJEJEJEJEJEJJE");
+                console.log(finalInside);
+                console.log(insideFunctionString);
 
                 if (insideSign == "-"){
                     finalInside = insideSign + finalInside;
@@ -414,7 +438,13 @@ if (samplePoly.includes("cos", 0)) {
 
                         var beforeCosConstant = parseInt(constantsBeforeCos);
 
-                        var newConstant = str * beforeCosConstant; 
+
+                        if (isNaN(beforeCosConstant) == true){
+                            newConstant = str; 
+                        } else {
+                            newConstant = str * beforeCosConstant; 
+                        }
+
                         if (sign1 == "-") {
                             newConstant = newConstant * -1;
                             newConstant = newConstant * -1
@@ -467,7 +497,12 @@ if (samplePoly.includes("cos", 0)) {
 
                     var beforeCosConstant = parseInt(constantsBeforeCos);
                     finalInside = parseInt(finalInside);
-                    var newConstant = finalInside * beforeCosConstant;
+
+                    if (isNaN(beforeCosConstant) == true){
+                        newConstant = finalInside;
+                    } else {
+                        newConstant = finalInside * beforeCosConstant;
+                    }
 
                     if (sign1 == "-") {
                         newConstant = newConstant * -1;
@@ -503,8 +538,6 @@ if (samplePoly.includes("cos", 0)) {
     }
 }
 }
-
-    nestedDerivative(samplePoly);
 
     function nestedDerivative(samplePoly){
     var termArrayPlus = []; 
@@ -664,16 +697,21 @@ if (samplePoly.includes("cos", 0)) {
                         sign = "+"; 
                     }
                 } else {
-                    multiplyExponents.push(termArrayExponents[gar]); 
+                    multiplyExponents.push(termArrayExponents[gar]);
+                    console.log("YAYAYAYAYAYAYYAYAYAYYAYAYAYAYYAYAYAYAYYAYAYAYA");
+                    console.log(termArrayExponents[gar]);
                 }
             }
             /* var str = multiplyExponents.toString(); */
 
-            var str = multiplyExponents.join('');
+            var str = multiplyExponents.join("");
+            console.log(multiplyExponents);
+            console.log("NEW CONSTANST YAYAYAYAYAYAYYAYA");
+            console.log(str);
             var splitString = str.split("");
             var reverseArray = splitString.reverse();
             var str = reverseArray.join("");
-            var str = parseInt(str);
+
             var newInt = parseInt(str);
             var newConstant = newInt * parseInt(originalExponent); 
 
@@ -776,12 +814,22 @@ if (samplePoly.includes("cos", 0)) {
         finalString = finalString.substring(1);
     }
 
-    finalString = finalString + finalStringSin;
+    finalString = finalString;
     console.log("FINAL DERIVATIVE?"); 
     console.log(finalString);
 
     return finalString;
     }
+
+    function returnFinalDerivative(){
+        finalString = nestedDerivative(samplePoly);
+        finalString = String(finalString);
+        finalDerivative = finalString + finalStringCos + finalStringSin;
+        return finalDerivative; 
+    }
+
+    returnFinalDerivative;
+    
 }
 
 polyDerivative(samplePoly);

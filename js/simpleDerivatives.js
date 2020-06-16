@@ -1,12 +1,15 @@
-var samplePoly = "3x^2 - 2x - 4 + 5x - 3 + 4x^2 + 3x^3 + 7x - 9x + 8x^4 - 9x^3 + 9 + 4894 -3x + 3x + 47x + 453sin(2x^2)"
+var samplePoly = "3x^2 - 2x - 4 + 5x - 3 + 4x^2 + 3x^3 + 7x - 9x + 8x^4 - 9x^3 + 9 + 4894 -3x + 3x + 47x + 1cos(3x)"
 
 function polyDerivative(samplePoly){
+
+    var finalStringSin = "";
 
     if (samplePoly.includes("sin", 0)) {
         var sinArray = [];
         for (var gir = 0; gir < samplePoly.length; gir++){
             var afterIndex3 = gir + 1; 
             if ((samplePoly[gir] == "s") || (samplePoly[afterIndex3] == "i")){
+                var insideFunctionString = "";
                 //get the stuff before the sin; 
                 gir2 = gir - 1;
                 console.log("GIR2:");
@@ -35,7 +38,6 @@ function polyDerivative(samplePoly){
                         finalAnswer.push("cos(x)"); 
                     }
                 } else {
-                    var insideFunctionString = "";
                     var firstInsideIndex = afterInsideFunctionIndex - 1;  
                     for (var oct = firstInsideIndex; oct != 101029383833838383736638373663773; oct++){
                         if ((samplePoly[oct] == ")") || (typeof samplePoly[oct] == undefined)){
@@ -45,7 +47,18 @@ function polyDerivative(samplePoly){
                         }
                     }
 
+                    var insideSign = "+";
+                    insideFunctionIndex1 = insideFunctionIndex; 
+                    if ((samplePoly[(insideFunctionIndex1)]) == "-"){
+                        insideSign = "-";
+                    }
+
                     var finalInside = nestedDerivative(insideFunctionString);
+                    finalInside = String(finalInside);
+
+                    if (insideSign == "-"){
+                        finalInside = insideSign + finalInside;
+                    }
 
                     //get the stuff before the sin function
                     var beforeStuff = "";
@@ -66,27 +79,430 @@ function polyDerivative(samplePoly){
                     //multiply constants. 
                     //combine into one string.
 
-                    if (insideFunctionString.includes("x", 0) == false){
+                    if (typeof finalInside.includes("x", 0) == 'undefined'){
                         finalAnswer.push(0);
                     } else {
-                        
-                        if (insideFunctionString.includes("^", 0) == true){
+                        var exponentArray = [];
+                        if ((finalInside.includes("^", 0) == true) || (finalInside.includes("+", 0) == false)){
+                            for (var viola = 0; viola < finalInside.length; viola++){
+                                exponentArray.push(finalInside[viola]); 
+                            }
 
+                            console.log("EXPONENTS RAY!");
+                            console.log(exponentArray);
+                            var constantMultiply = [];
+                            var exponentStarts = 0; 
+                            for (var bird = 0; bird != 101029383833838383736638373663773; bird++){
+                                if ((exponentArray[bird] == "x") || (exponentArray[bird] == "^")){
+                                    if ((exponentArray[bird] == "x")){
+                                        for (var bird2 = (bird + 1); bird2 != 101029383833838383736638373663773; bird2++){
+                                            if (exponentArray[bird2] == "^"){ 
+                                                exponentStarts = bird2;
+                                                bird2 = 101029383833838383736638373663773;
+                                            } 
+                                        }
+                                    }
+                                    bird = 101029383833838383736638373663773;
+                                } else {
+                                    constantMultiply.push(exponentArray[bird]);
+                                    }
+                                }
+                            var exponent = [];
+
+                            console.log("(((((((((((((((((((((((");
+                            console.log(exponentStarts);
+                            for (var sea = (exponentStarts + 1); sea != 101029383833838383736638373663773; sea++){
+                                if ((exponentArray[sea] == " ") || (exponentArray[sea] == "+") || (exponentArray[sea] == "-") || (typeof exponentArray[sea] == 'undefined')){
+                                    sea = 101029383833838383736638373663773;
+                                } else {
+                                    exponent.push(exponentArray[sea]);
+                                }
+                            }
+
+                            var constantsBeforeSin = ""; 
+                            console.log("GIRRRR");
+                            console.log(gir);
+                            var sign1 = "+";
+                            for (var yay = (gir - 1); yay != 101029383833838383736638373663773; yay--){
+                                if ((samplePoly[yay] == " ") || (samplePoly[yay] == "+") || (samplePoly[yay] == "-") || (typeof samplePoly[yay] == 'undefined')){
+                                    if (samplePoly[yay] == " "){
+                                        yay1 = yay - 1; 
+                                        if (samplePoly[yay1] == "+"){
+                                            sign1 = "+";
+                                        } else if (samplePoly[yay1] =="-"){
+                                            sign1 = "-"
+                                        }
+                                    } else if (samplePoly[yay] == "+"){
+                                        sign1 = "+";
+                                    } else if (samplePoly[yay] == "-") {
+                                        sign1 = "-";
+                                    }
+                                    yay = 101029383833838383736638373663773;
+                                } else {
+                                    constantsBeforeSin = constantsBeforeSin + samplePoly[yay];
+                                }
+                            }
+
+                            constantsBeforeSin1 = constantsBeforeSin.split("");
+                            var reverseArray2 = constantsBeforeSin1.reverse();
+                            var joinArray2 = reverseArray2.join("");
+                            constantsBeforeSin = joinArray2;
+
+                            console.log("CONSTANTS BEFORE SIN");
+                            console.log(constantsBeforeSin);
+
+                            console.log("EXPONENTS ARRAY"); 
+                            console.log(exponent);
+
+                            console.log("CONSTANT MULTIPLY");
+                            console.log(constantMultiply);
+
+                            var exponentNumber = exponent.join("");
+
+                            var str = constantMultiply.join('');
+                            var str = parseInt(str);
+
+                            var exponentNumber = parseInt(exponentNumber);
+                            exponentNumber = exponentNumber.toString(); 
+
+                            var beforeSinConstant = parseInt(constantsBeforeSin);
+
+                            var newConstant = str * beforeSinConstant; 
+                            if (sign1 == "-") {
+                                newConstant = newConstant * -1;
+                                if (newConstant < 0){
+                                    finalStringSin = newConstant + "x^" + exponentNumber + "cos(" +  insideFunctionString + ")"
+                                } else {
+                                    finalStringSin = "+" + newConstant + "x^" + exponentNumber + "cos(" +  insideFunctionString + ")"
+                                }
+                                
+                            } else if (sign1 =="+") {
+                                if (newConstant < 0){
+                                    finalStringSin = newConstant + "x^" + exponentNumber + "cos(" +  insideFunctionString + ")";
+                                } else {
+                                    finalStringSin = "+" + newConstant + "x^" + exponentNumber + "cos(" +  insideFunctionString + ")";
+                                }
+                            }
+
+                            console.log("NEW CONSTANTTTTTT ****************"); 
+                            console.log(newConstant);
+                            var newConstant = newConstant.toString();
+
+                            console.log("FINAL STRING"); 
+                            console.log(finalStringSin);
+                    } else {
+                        var constantsBeforeSin = ""; 
+                    console.log("GIRRRR");
+                    console.log(gir);
+                    var sign1 = "+";
+                    for (var yay = (gir - 1); yay != 101029383833838383736638373663773; yay--){
+                        if ((samplePoly[yay] == " ") || (samplePoly[yay] == "+") || (samplePoly[yay] == "-") || (typeof samplePoly[yay] == 'undefined')){
+                            if (samplePoly[yay] == " "){
+                                yay1 = yay - 1; 
+                                if (samplePoly[yay1] == "+"){
+                                    sign1 = "+";
+                                } else if (samplePoly[yay1] =="-"){
+                                    sign1 = "-"
+                                }
+                            } else if (samplePoly[yay] == "+"){
+                                sign1 = "+";
+                            } else if (samplePoly[yay] == "-") {
+                                sign1 = "-";
+                            }
+                            yay = 101029383833838383736638373663773;
                         } else {
-
+                            constantsBeforeSin = constantsBeforeSin + samplePoly[yay];
                         }
                     }
 
+                    var beforeSinConstant = parseInt(constantsBeforeSin);
+                    finalInside = parseInt(finalInside);
+                    var newConstant = finalInside * beforeSinConstant;
 
+                    if (sign1 == "-") {
+                        newConstant = newConstant * -1;
+                        if (newConstant < 0){
+                            finalStringSin = newConstant + "cos(" +  insideFunctionString + ")"
+                        } else {
+                            finalStringSin = "+" + newConstant + "cos(" +  insideFunctionString + ")"
+                        }
+                        
+                    } else if (sign1 =="+") {
+                        if (newConstant < 0){
+                            finalStringSin = newConstant + "cos(" +  insideFunctionString + ")";
+                        } else {
+                            finalStringSin = "+" + newConstant + "cos(" +  insideFunctionString + ")";
+                        }
+                    }
+
+                    console.log("NEW CONSTANTTTTTT ****************"); 
+                    console.log(newConstant);
+                    var newConstant = newConstant.toString();
+
+                    console.log("FINAL STRING FOR REAL SIN"); 
+                    console.log(finalStringSin);
+                    }
                 }
                 
             }
         }
     }
+}
 
-    if (samplePoly.includes("cos", 0)){
+var finalStringCos = "";
 
+if (samplePoly.includes("cos", 0)) {
+    var cosArray = [];
+    for (var gir = 0; gir < samplePoly.length; gir++){
+        var afterIndex3 = gir + 1; 
+        if ((samplePoly[gir] == "c") || (samplePoly[afterIndex3] == "o")){
+            var insideFunctionString = "";
+            //get the stuff before the sin; 
+            gir2 = gir - 1;
+            console.log("GIR2:");
+            console.log(gir2);
+            for (var gir1 = gir2; gir1 != 101029383833838383736638373663773; gir1--){
+                if ((samplePoly[gir1] == "+") || (samplePoly[gir1] == "-")|| (typeof samplePoly[gir1] == 'undefined') || (samplePoly[gir1] == " ")){
+                    gir1 = 101029383833838383736638373663773;
+                } else {
+                    cosArray.push(samplePoly[gir1]);
+                }
+            }
+            cosArray = cosArray.reverse();
+
+            var finalAnswer = [];
+            var insideFunctionIndex =  gir + 4; 
+            var beforeInsideFunctionIndex = insideFunctionIndex - 1;
+            var afterInsideFunctionIndex = insideFunctionIndex + 1;  
+            var beforeCosIndex = gir - 1;
+            if ((samplePoly[insideFunctionIndex] == "x") && (samplePoly[beforeInsideFunctionIndex] == "(") && (samplePoly[afterInsideFunctionIndex] == ")")){
+                if (samplePoly[beforeSinIndex] == " "){
+                    var realBeforeCosIndex = beforeInsideFunctionIndex - 1;
+                    if  (((samplePoly[realBeforeCosIndex] == "+") || (samplePoly[realBeforeCosIndex] == "-") || (typeof samplePoly[realBeforeCosIndex] == 'undefined')) && (typeof samplePoly[beforeCosIndex] != 'number')){
+                        finalAnswer.push("cos(x)"); 
+                    }
+                }  else if (((samplePoly[beforeCosIndex] == "+") || (samplePoly[beforeCosIndex] == "-") || (typeof samplePoly[beforeCosIndex] == 'undefined')) && (typeof samplePoly[beforeCosIndex] != 'number')){
+                    finalAnswer.push("cos(x)"); 
+                }
+            } else {
+                var firstInsideIndex = afterInsideFunctionIndex - 1;  
+                for (var oct = firstInsideIndex; oct != 101029383833838383736638373663773; oct++){
+                    if ((samplePoly[oct] == ")") || (typeof samplePoly[oct] == undefined)){
+                        oct = 101029383833838383736638373663773;
+                    } else {
+                        insideFunctionString = insideFunctionString + samplePoly[oct];
+                    }
+                }
+
+                var insideSign = "+";
+                insideFunctionIndex1 = insideFunctionIndex; 
+                if ((samplePoly[(insideFunctionIndex1)]) == "-"){
+                    insideSign = "-";
+                }
+
+                var finalInside = nestedDerivative(insideFunctionString);
+                finalInside = String(finalInside);
+
+                if (insideSign == "-"){
+                    finalInside = insideSign + finalInside;
+                }
+
+                //get the stuff before the sin function
+                var beforeStuff = "";
+                var beforeInsideIndex = gir - 1; 
+                for (var fish = beforeInsideIndex; fish != 101029383833838383736638373663773; fish--){
+                    if ((samplePoly[fish] == " ") || (samplePoly[fish] == "+") || (samplePoly[fish] == "-") || (typeof samplePoly[fish] == 'undefined')) {
+                        fish = 101029383833838383736638373663773;
+                    } else {
+                        beforeStuff  = beforeStuff + samplePoly[fish];
+                    }
+                }
+
+                var splitString = beforeStuff.split("");
+                var reverseArray = splitString.reverse();
+                beforeStuff = reverseArray.join("");
+
+                //split inside function into its exponent and x. 
+                //multiply constants. 
+                //combine into one string.
+
+                if (typeof finalInside.includes("x", 0) == 'undefined'){
+                    finalAnswer.push(0);
+                } else {
+                    var exponentArray = [];
+                    if ((finalInside.includes("^", 0) == true) && (finalInside.includes("+", 0) == false)){
+                        for (var viola = 0; viola < finalInside.length; viola++){
+                            exponentArray.push(finalInside[viola]); 
+                        }
+
+                        console.log("EXPONENTS RAY!");
+                        console.log(exponentArray);
+                        var constantMultiply = [];
+                        var exponentStarts = 0; 
+                        for (var bird = 0; bird != 101029383833838383736638373663773; bird++){
+                            if ((exponentArray[bird] == "x") || (exponentArray[bird] == "^")){
+                                if ((exponentArray[bird] == "x")){
+                                    for (var bird2 = (bird + 1); bird2 != 101029383833838383736638373663773; bird2++){
+                                        if (exponentArray[bird2] == "^"){ 
+                                            exponentStarts = bird2;
+                                            bird2 = 101029383833838383736638373663773;
+                                        } 
+                                    }
+                                }
+                                bird = 101029383833838383736638373663773;
+                            } else {
+                                constantMultiply.push(exponentArray[bird]);
+                                }
+                            }
+                        var exponent = [];
+
+                        console.log("(((((((((((((((((((((((");
+                        console.log(exponentStarts);
+                        for (var sea = (exponentStarts + 1); sea != 101029383833838383736638373663773; sea++){
+                            if ((exponentArray[sea] == " ") || (exponentArray[sea] == "+") || (exponentArray[sea] == "-") || (typeof exponentArray[sea] == 'undefined')){
+                                sea = 101029383833838383736638373663773;
+                            } else {
+                                exponent.push(exponentArray[sea]);
+                            }
+                        }
+
+                        var constantsBeforeCos = ""; 
+                        console.log("GIRRRR");
+                        console.log(gir);
+                        var sign1 = "+";
+                        for (var yay = (gir - 1); yay != 101029383833838383736638373663773; yay--){
+                            if ((samplePoly[yay] == " ") || (samplePoly[yay] == "+") || (samplePoly[yay] == "-") || (typeof samplePoly[yay] == 'undefined')){
+                                if (samplePoly[yay] == " "){
+                                    yay1 = yay - 1; 
+                                    if (samplePoly[yay1] == "+"){
+                                        sign1 = "+";
+                                    } else if (samplePoly[yay1] =="-"){
+                                        sign1 = "-"
+                                    }
+                                } else if (samplePoly[yay] == "+"){
+                                    sign1 = "+";
+                                } else if (samplePoly[yay] == "-") {
+                                    sign1 = "-";
+                                }
+                                yay = 101029383833838383736638373663773;
+                            } else {
+                                constantsBeforeCos = constantsBeforeCos + samplePoly[yay];
+                            }
+                        }
+
+                        constantsBeforeCos1 = constantsBeforeCos.split("");
+                        var reverseArray2 = constantsBeforeCos1.reverse();
+                        var joinArray2 = reverseArray2.join("");
+                        constantsBeforeCos = joinArray2;
+
+                        console.log("CONSTANTS BEFORE COS");
+                        console.log(constantsBeforeCos);
+
+                        console.log("EXPONENTS ARRAY"); 
+                        console.log(exponent);
+
+                        console.log("CONSTANT MULTIPLY");
+                        console.log(constantMultiply);
+
+                        var exponentNumber = exponent.join("");
+
+                        var str = constantMultiply.join('');
+                        var str = parseInt(str);
+
+                        var exponentNumber = parseInt(exponentNumber);
+                        exponentNumber = exponentNumber.toString(); 
+
+                        var beforeCosConstant = parseInt(constantsBeforeCos);
+
+                        var newConstant = str * beforeCosConstant; 
+                        if (sign1 == "-") {
+                            newConstant = newConstant * -1;
+                            newConstant = newConstant * -1
+                            if (newConstant < 0){
+                                finalStringCos = newConstant + "x^" + exponentNumber + "sin(" +  insideFunctionString + ")"
+                            } else {
+                                finalStringCos = "+" + newConstant + "x^" + exponentNumber + "sin(" +  insideFunctionString + ")"
+                            }
+                            
+                        } else if (sign1 =="+") {
+                            newConstant = newConstant * -1;
+                            if (newConstant < 0){
+                                finalStringCos = newConstant + "x^" + exponentNumber + "sin(" +  insideFunctionString + ")";
+                            } else {
+                                finalStringCos = "+" + newConstant + "x^" + exponentNumber + "sin(" +  insideFunctionString + ")";
+                            }
+                        }
+
+                        console.log("NEW CONSTANTTTTTT ****************"); 
+                        console.log(newConstant);
+                        var newConstant = newConstant.toString();
+
+                        console.log("FINAL STRING FOR REAL COS"); 
+                        console.log(finalStringCos);
+                } else {
+
+                    var constantsBeforeCos = ""; 
+                    console.log("GIRRRR");
+                    console.log(gir);
+                    var sign1 = "+";
+                    for (var yay = (gir - 1); yay != 101029383833838383736638373663773; yay--){
+                        if ((samplePoly[yay] == " ") || (samplePoly[yay] == "+") || (samplePoly[yay] == "-") || (typeof samplePoly[yay] == 'undefined')){
+                            if (samplePoly[yay] == " "){
+                                yay1 = yay - 1; 
+                                if (samplePoly[yay1] == "+"){
+                                    sign1 = "+";
+                                } else if (samplePoly[yay1] =="-"){
+                                    sign1 = "-"
+                                }
+                            } else if (samplePoly[yay] == "+"){
+                                sign1 = "+";
+                            } else if (samplePoly[yay] == "-") {
+                                sign1 = "-";
+                            }
+                            yay = 101029383833838383736638373663773;
+                        } else {
+                            constantsBeforeCos = constantsBeforeCos + samplePoly[yay];
+                        }
+                    }
+
+                    var beforeCosConstant = parseInt(constantsBeforeCos);
+                    finalInside = parseInt(finalInside);
+                    var newConstant = finalInside * beforeCosConstant;
+
+                    if (sign1 == "-") {
+                        newConstant = newConstant * -1;
+                        newConstant = newConstant * -1
+                        if (newConstant < 0){
+                            finalStringCos = newConstant + "sin(" +  insideFunctionString + ")"
+                        } else {
+                            finalStringCos = "+" + newConstant + "sin(" +  insideFunctionString + ")"
+                        }
+                        
+                    } else if (sign1 =="+") {
+                        newConstant = newConstant * -1;
+                        if (newConstant < 0){
+                            finalStringCos = newConstant + "sin(" +  insideFunctionString + ")";
+                        } else {
+                            finalStringCos = "+" + exponentNumber + "sin(" +  insideFunctionString + ")";
+                        }
+                    }
+
+                    console.log("NEW CONSTANTTTTTT ****************"); 
+                    console.log(newConstant);
+                    var newConstant = newConstant.toString();
+
+                    console.log("FINAL STRING FOR REAL COS"); 
+                    console.log(finalStringCos);
+
+
+
+                }
+            }
+            
+        }
     }
+}
+}
 
     nestedDerivative(samplePoly);
 
@@ -148,7 +564,7 @@ function polyDerivative(samplePoly){
     for (var w = 0; w < charArray.length; w++){
         if (w != 0){
             var beforeIndex = w - 1; 
-            if ((charArray[beforeIndex] == "+")){
+            if ((charArray[beforeIndex] == "+")) {
                 for (var s = w; s != 101029383833838383736638373663773; s++){
                     if ((charArray[s] == "+") || (charArray[s] == "-") || (typeof charArray[s] == 'undefined')) {
                         s = 101029383833838383736638373663773;
@@ -251,9 +667,25 @@ function polyDerivative(samplePoly){
                     multiplyExponents.push(termArrayExponents[gar]); 
                 }
             }
-            var str = multiplyExponents.toString();
+            /* var str = multiplyExponents.toString(); */
+
+            var str = multiplyExponents.join('');
+            var splitString = str.split("");
+            var reverseArray = splitString.reverse();
+            var str = reverseArray.join("");
+            var str = parseInt(str);
             var newInt = parseInt(str);
-            var newConstant = newInt * originalExponent; 
+            var newConstant = newInt * parseInt(originalExponent); 
+
+            /*
+            console.log("ORGIINAL EXPONENT:");
+            console.log(originalExponent);
+            newConstant = newConstant.toString();
+            var splitString1 = newConstant.split("");
+            var reverseArray1 = splitString1.reverse(); 
+            var newConstant = reverseArray1.join(""); 
+            var newConstant = parseInt(newConstant);*/
+            
             newTermArrayExponents.push(newConstant);
             newTermArrayExponents.push(sign);
             newTermArrayExponents.push("|");
@@ -261,6 +693,8 @@ function polyDerivative(samplePoly){
     }
 
     newTermArrayExponents = newTermArrayExponents.reverse();
+    console.log("NEW TERM ARRAY EXPONENTS");
+    console.log(newTermArrayExponents);
 
     var sumPlus = 0; 
     for (var fira = 0; fira < newTermArrayPlus.length; fira++){
@@ -296,6 +730,16 @@ function polyDerivative(samplePoly){
             }
             var real_Number1 = number1.join('');
             var real_Number1 = parseInt(real_Number1);
+
+            /*
+            var str = multiplyExponents.join('');
+            var splitString = str.split("");
+            var reverseArray = splitString.reverse();
+            var str = reverseArray.join("");
+            var str = parseInt(str);
+            var newInt = parseInt(str);
+            var newConstant = newInt * parseInt(originalExponent); */
+
             /*var real_Number1 = real_Number1 * (-1); */
             differenceMinus = differenceMinus + real_Number1;
         }
@@ -330,9 +774,13 @@ function polyDerivative(samplePoly){
 
     if ((finalString.charAt(0) == "+")){
         finalString = finalString.substring(1);
-    } 
+    }
+
+    finalString = finalString + finalStringSin;
     console.log("FINAL DERIVATIVE?"); 
     console.log(finalString);
+
+    return finalString;
     }
 }
 

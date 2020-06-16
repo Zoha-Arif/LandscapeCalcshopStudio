@@ -141,8 +141,7 @@ function polyIntegral(sampleInt){
                 str = str + multiplyExponents[ukele];
             }
             var newInt = parseInt(str);
-            console.log("NEW INT:"); 
-            console.log(newInt);
+            
             var newConstant = newInt / (2);
             newTermArrayPlus.push(newConstant);
             newTermArrayPlus.push("+");

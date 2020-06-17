@@ -14,7 +14,7 @@ yMax3 = 10;
 var math3 = mathjs(),
     expr3 = '',
     scope3 = {x: 0},
-    tree3 = math3.parse(expr2, scope2);
+    tree3 = math3.parse(expr3, scope3);
 
 function drawCurve3() {
     var xPixel3, yPixel3; 

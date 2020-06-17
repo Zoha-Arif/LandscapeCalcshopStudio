@@ -86,6 +86,14 @@
     top: 450px; 
 }
 
+#upperCloud2 {
+    position: absolute; 
+    z-index: 800;
+    border-width: 2px;
+    left: 1320px;
+    top: 500px; 
+}
+
 #cloudCanvas {
     position: absolute;
     left: 50px;
@@ -96,6 +104,13 @@
     position: absolute;
     left: 600px;
     top: 20px; 
+    z-index: 103; 
+}
+
+#canvas6 {
+    position: absolute;
+    left: 600px;
+    top: 70px; 
     z-index: 103; 
 }
 

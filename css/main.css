@@ -1,39 +1,107 @@
+#inputMountain {
+    position: absolute; 
+    z-index: 900;
+    border-width: 2px; 
+    box-shadow: 2px; 
+    left: 1320px;
+    top: 400px; 
+}
+
+#inputunderCloud {
+    position: absolute; 
+    z-index: 900;
+    border-width: 2px; 
+    box-shadow: 2px; 
+    left: 1320px;
+    top: 350px; 
+
+}
+
+
+#strokeColor {
+    position: absolute;
+    z-index: 900;
+    border-width: 2px; 
+    box-shadow: 2px; 
+    left: 1320px;
+    top: 150px; 
+}
+
+#strokeWidth {
+    position: absolute;;
+    z-index: 901;
+    border-width: 2px;
+    left: 1320px;
+    top: 200px; 
+}
 #can {
     position: absolute;
     z-index: 500; 
     left: 30px;
-    border: 1px solid black; 
+    border: 2px solid black; 
 }
 #Logo {
     position: absolute;
-    left: 30px;  
+    left: 1300px;  
     height: 100px;
 }
 
 #myCanvas {
     position: relative;
     left: 30px; 
-    top: 100px; 
+    top: 50px; 
     z-index: 100;
+    box-shadow: 2px; 
+}
+
+#canvas4 {
+    position: absolute;
+    left: 30px; 
+    top: 650px; 
+    z-index: 100;
+    box-shadow: 2px; 
 }
 
 #inputField {
     position: absolute;
-    left: 30px; 
-    top: 770px;
-    z-index: 700; 
+    z-index: 700;
+    border-width: 2px;
+    left: 1320px;
+    top: 250px; 
 }
 
 #inputFieldCloud {
     position: absolute; 
-    left: 400px; 
-    top: 770px; 
     z-index: 800;
+    border-width: 2px;
+    left: 1320px;
+    top: 300px; 
+}
+
+#underCloud2 {
+    position: absolute; 
+    z-index: 800;
+    border-width: 2px;
+    left: 1320px;
+    top: 450px; 
 }
 
 #cloudCanvas {
     position: absolute;
-    left: 30px;
-    top: 100px; 
+    left: 50px;
+    top: 10px; 
     z-index: 101;
+}
+#canvas5 {
+    position: absolute;
+    left: 600px;
+    top: 20px; 
+    z-index: 103; 
+}
+
+#derivativeCloudCanvas {
+    position: absolute;
+    left: 50px;
+    top: 50px; 
+    z-index: 101;    
 }

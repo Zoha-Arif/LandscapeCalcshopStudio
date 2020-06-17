@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Landscape Calcshop Studio</title>
+        <!-- <link rel="stylesheet" href="../css/main.css">-->
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/mathjs/0.15.0/math.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+        <script src="bundle4.js"></script>
+        <script src="index.js"></script>
+    </head>
+
+    <body>
+
+        <img id="Logo" src="../images/LogoLine.png" alt="Landscape Calcshop Studio"> 
+        <canvas id="myCanvas" width = "1000" height = "600"></canvas>
+        <input id="inputField">
+
+        <canvas id="derivativeCloudCanvas"></canvas>
+
+        <canvas id="cloudCanvas" width = "200" height = "200"></canvas>
+        <input id="inputFieldCloud"> -->
+
+        <canvas id="can" width="1200" height="900"></canvas>
+
+        
+
+        <style>
+
+            #can {
+                position: absolute;
+                z-index: 500; 
+                left: 30px;
+                border: 1px solid black; 
+            }
+            #Logo {
+                position: absolute;
+                left: 30px;  
+                height: 100px;
+            }
+
+            #myCanvas {
+                position: relative;
+                left: 30px; 
+                top: 100px; 
+                z-index: 100;
+            }
+
+            #inputField {
+                position: absolute;
+                left: 30px; 
+                top: 770px;
+                z-index: 700; 
+            }
+
+            #inputFieldCloud {
+                position: absolute; 
+                left: 400px; 
+                top: 770px; 
+                z-index: 800;
+            }
+
+            #cloudCanvas {
+                position: absolute;
+                left: 30px;
+                top: 100px; 
+                z-index: 101;
+            }
+
+        </style>
+
+
+        <script src="/js/main.js"></script>
+        <script src="/js/mainCloud.js"></script>
+        <script src="/js/simpleDerivatives.js"></script>
+        <script src="/js/simpleIntegrals.js"></script>
+        <script src="/js/canvasDrawingSample.js"></script>
+        <script src="/js/underCloud.js"></script> 
+    </body>
+
+</html>

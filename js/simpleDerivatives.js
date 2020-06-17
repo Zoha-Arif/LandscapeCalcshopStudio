@@ -1,4 +1,4 @@
-var samplePoly = "3x^2 - 2x - 4 + 5x - 3 + 4x^2 + 3x^3 + 7x - 9x + 8x^4 - 9x^3 + 9 + 4894 -3x + 3x + 47x + + sin(3x) + cos(3x^2)"
+var samplePoly = "sin(x^2) + cos(3x^2)"
 
 function polyDerivative(samplePoly){
 
@@ -298,10 +298,10 @@ if (samplePoly.includes("cos", 0)) {
                 if (samplePoly[beforeCosIndex] == " "){
                     var realBeforeCosIndex = beforeInsideFunctionIndex - 1;
                     if  (((samplePoly[realBeforeCosIndex] == "+") || (samplePoly[realBeforeCosIndex] == "-") || (typeof samplePoly[realBeforeCosIndex] == 'undefined')) && (typeof samplePoly[beforeCosIndex] != 'number')){
-                        finalAnswer.push("cos(x)"); 
+                        finalAnswer.push("-sin(x)"); 
                     }
                 }  else if (((samplePoly[beforeCosIndex] == "+") || (samplePoly[beforeCosIndex] == "-") || (typeof samplePoly[beforeCosIndex] == 'undefined')) && (typeof samplePoly[beforeCosIndex] != 'number')){
-                    finalAnswer.push("cos(x)"); 
+                    finalAnswer.push("-sin(x)"); 
                 }
             } else {
                 var firstInsideIndex = afterInsideFunctionIndex - 1;  
@@ -828,7 +828,7 @@ if (samplePoly.includes("cos", 0)) {
         return finalDerivative; 
     }
 
-    returnFinalDerivative;
+    return returnFinalDerivative();
     
 }
 

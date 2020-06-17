@@ -1,0 +1,17 @@
+{
+  "name": "npmapp",
+  "version": "1.0.0",
+  "description": "simple sample app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Zoha Arif",
+  "license": "MIT",
+  "dependencies": {
+    "jquery": "^3.5.1",
+    "loadash": "^1.0.0",
+    "mathjs": "^7.0.1",
+    "mathjs-simple-integral": "^0.1.1"
+  }
+}

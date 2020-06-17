@@ -26,9 +26,11 @@ var canvas, ctx, flag = false,
             findxy('out', e)
         }, false);
     }
-    
+
+    // Set the initial text value programmatically using jQuery.
+
     function color(obj) {
-        switch (obj.id) {
+        switch (obj) {
             case "green":
                 x = "green";
                 break;
@@ -50,16 +52,39 @@ var canvas, ctx, flag = false,
             case "white":
                 x = "white";
                 break;
+            case "purple":
+                x = "purple";
+                break
+            case "pink":
+                x = "pink"; 
+                break
+            case "brown": 
+                x = "brown";
+                break; 
         }
         if (x == "white") y = 14;
         else y = 2;
     
     }
+
+    var input3 = $('#strokeColor');
+    input3.keyup(function(event) {
+        console.log("WOOOOOOOOOOOOOOOOOOOOOOOOOOOOOORKING?");
+        console.log(input3.val());
+        color(input3.val());
+    });
+
+    var input4 = $('#strokeWidth');
+    input4.keyup(function(event) {
+        y = input4.val();
+        y = parseInt(y);
+    });
     
     function draw() {
         ctx.beginPath();
         ctx.moveTo(prevX, prevY);
         ctx.lineTo(currX, currY);
+        ctx.strokeStyle = x;
         ctx.strokeStyle = x;
         ctx.lineWidth = y;
         ctx.stroke();

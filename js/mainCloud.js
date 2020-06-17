@@ -11,9 +11,9 @@ var yMin1 = -10;
 var yMax1 = 10; 
 
 var math = mathjs(),
-            expr = 'sin(x)*x',
+            expr2 = '',
             scope = {x: 0},
-            tree = math.parse(expr, scope);
+            tree = math.parse(expr2, scope);
 
 function evaluateMathExprCloud(mathX1){
     scope.x = mathX1; 
@@ -24,13 +24,13 @@ function initTextFieldCloud(){
     var input1 = $('#inputFieldCloud');
 
     // Set the initial text value programmatically using jQuery.
-    input1.val(expr);
+    input1.val(expr2);
       
     // Listen for changes using jQuery.
     input1.keyup(function (event) {
-        expr = input1.val();
-        tree = math.parse(expr, scope);
-        console.log(expr);
+        expr2 = input1.val();
+        //on keyup, start the countdown
+        tree = math.parse(expr2, scope);
         cCloud.clearRect(0, 0, canvasCloud.width, canvasCloud.height); 
         drawCurveCloud();
     });
@@ -53,6 +53,7 @@ function drawCurveCloud(){
         mathY1 = evaluateMathExprCloud(mathX1);
 
         percentY1 = (mathY1 - yMin1) / (yMax1 - yMin1); 
+        percentY1 = 1 - percentY1;
 
         xPixel1 = percentX1 * canvasCloud.width;
         yPixel1 = percentY1 * canvasCloud.height;
@@ -60,6 +61,7 @@ function drawCurveCloud(){
     }
     cCloud.lineWidth = 2;
     cCloud.stroke();
+    
 }
 
 drawCurveCloud();

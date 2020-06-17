@@ -10,7 +10,7 @@ yMin = -10;
 yMax = 10; 
 
 // n is the number of line segments. 
-var n = 100;
+var n = 300;
 //i is used inside of the for loop. 
 var i;
 var xPixel, yPixel;   
@@ -21,7 +21,7 @@ var percentY;
 var mathX, mathY;
 
 var math = mathjs(),
-    expr = 'sin(x)*(x-1)',
+    expr = '',
     scope = {x: 0}; 
 
 function evaluateMathExpr(mathX){
@@ -37,8 +37,9 @@ function drawCurve(){
         percentY = i / (n - 1);
 
         mathX = percentX * (xMax - xMin) + xMin; 
-        mathY = evaluateMathExpr(mathX);    
+        mathY = evaluateMathExpr(mathX); 
         percentY = ((mathY -yMin))/(yMax - yMin);
+        percentY = 1 - percentY;
         xPixel = percentX * canvas.width;
         yPixel = percentY * canvas.height; 
         c.lineTo(xPixel, yPixel);

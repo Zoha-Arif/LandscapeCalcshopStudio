@@ -17,14 +17,19 @@ fs.readFile('../index.html', function (err, html) {
     }).listen(PORT);
 }); */
 
-
+console.log("HEREEE!!!");
 const {simplify, parse, derivative} = require('mathjs');
-console.log("HELLO WORLD!");
-console.log(derivative('sin(2x^4)', 'x').toString());
-
-console.log("WOOOOOOOOOOOOOOOO!");
-var derivativeReal = derivative('sin(2x^4)', 'x').toString();
-console.log(derivativeReal);
+/* -----------------------------------------------------------------------------------------------------------------------*/
+var input = $('#derivativesInput');
+    console.log("A");
+      // Listen for changes using jQuery.
+input.keyup(function (event) {
+    console.log("RUNNNING!");
+    var derivativeIntial = input.val();
+    console.log("B");
+    console.log(derivative(derivativeIntial, 'x').toString());
+    console.log("C");
+});  
 },{"mathjs":882}],2:[function(require,module,exports){
 /**
  * @license Complex.js v2.0.11 11/02/2016

@@ -69,11 +69,8 @@ var canvas, ctx, flag = false,
 
     var input3 = $('#strokeColor');
     input3.keyup(function(event) {
-        console.log("WOOOOOOOOOOOOOOOOOOOOOOOOOOOOOORKING?");
-        console.log(input3.val());
         color(input3.val());
     });
-
     var input4 = $('#strokeWidth');
     input4.keyup(function(event) {
         y = input4.val();
@@ -91,6 +88,7 @@ var canvas, ctx, flag = false,
         ctx.closePath();
     }
     
+
     function erase() {
         var m = confirm("Want to clear");
         if (m) {
@@ -98,7 +96,8 @@ var canvas, ctx, flag = false,
             document.getElementById("canvasimg").style.display = "none";
         }
     }
-    
+
+
     function save() {
         document.getElementById("canvasimg").style.border = "2px solid";
         var dataURL = canvas.toDataURL();

@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>Landscape Calcshop Studio</title>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="css/main.css">
         <script src="http://cdnjs.cloudflare.com/ajax/libs/mathjs/0.15.0/math.min.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
@@ -13,6 +14,16 @@
         <img id="Logo" src="images/LogoLine.png" alt="Landscape Calcshop Studio">
         <canvas id="myCanvas" width = "1190" height = "900"></canvas>
         <input id="inputField" placeholder="Enter upper mountain">
+
+        <p id = "colorPicker" class="description">Type the name of the color you'd like for your drawing tool. <br> i.e. purple, blue, brown, yellow. </p>
+        <p id = "thickPicker" class="description">Type the number of thickness you'd like your drawing tool to <br> have. The higher the number, the thicker the drawing tool mark. <br> the default is 2 pixels.</p>
+        <p id="upperMountainDescription" class="description">Type an original function. This will form the upper level of <br> mountains. Remember that all functions are graphed on a coordinate <br> plane with xMax and yMax of 10 and xMin and yMin of -10.</p>
+        <p id="lowerMountainDescription" class="description">Type the integral of the original upper mountain function you <br> entered below. Use the Calcshop Indefinite Integral calculator! <br> You may use a random value for C or 0. This will form the lower <br> level of mountains. Remember that all functions are graphed on <br> a coordinate plane with xMax and yMax of 10 and xMin and yMin <br> of -10.</p>
+        <p id="firstCloudUpper" class="description">Type an original function. This will form the upper roof of your <br> left-hand cloud. Remember that all functions are graphed on a <br> coordinate plane with xMax and yMax of 10 and xMin and yMin of -10.</p>
+        <p id="firstCloudLower" class="description">Type the derivative of the original upper mountain function you <br> entered below. Use the Calcshop Derivative calculator! This will <br> form the lower level of mountains. Remember that all functions are <br> graphed on a coordinate plane with xMax and yMax of 10 and xMin <br> and yMin of -10.</p>
+        <p id="firstfreeFunctionUpper" class="description">Type an original function.</p>
+        <p id="firstfreeFunctionLower" class="description">Type the derivative or integral of the original function entered <br> above. Use the Calcshop Derivative or Indefinite Integral <br> calculator! You may use a random value for C or 0 if calculating  <br> an indefinite integral. Remember that all functions are graphed <br> on a coordinate plane with xMax and yMax of 10 and xMin and yMin <br> of -10.</p>
+
 
         <canvas id="cloudCanvas" width = "200" height = "200"></canvas>
         <input id="inputFieldCloud" placeholder="Enter upper cloud function">

@@ -26,9 +26,3 @@ LandscapeCalcshopStudio provides a playful, math-oriented creative space where u
 - **User interface**: Interactive panels for function input, color picking, and layer control  
 
 ---
-
-## 🚀 How to Use
-
-1. Clone the repository:  
-   ```bash
-   git clone https://github.com/Zoha-Arif/LandscapeCalcshopStudio.git

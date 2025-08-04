@@ -2,16 +2,10 @@
 
 An interactive drawing web app that turns math into art. Users write mathematical functions to generate layered illustrations and color-code sections to bring their creations to life.
 
----
-
-## 🎯 Project Purpose
-
 LandscapeCalcshopStudio provides a playful, math-oriented creative space where users:
 - Enter mathematical functions (e.g., `y = cos(x) + 2`) to generate curves and shapes  
 - Color-code specific regions or functions to build complex, layered visuals  
 - Combine multiple function-based elements into one cohesive illustration  
-
-This fusion of math and art is ideal for education and creativity, allowing users to explore mathematical expressions visually and intuitively.
 
 ---
 
